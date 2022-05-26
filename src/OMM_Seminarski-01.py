@@ -1,12 +1,30 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
 import matplotlib.pyplot as plt
 import math
 import numpy as np
 
+
+# In[2]:
+
+
 def izracunajA(a, b, A0, B0, t):
     return ((math.sqrt(a*b)*A0 - a*B0)/(2*math.sqrt(a*b))*(math.e**(math.sqrt(a*b)*t))) + ((math.sqrt(a*b)*A0 + a*B0)/(2*math.sqrt(a*b))*(math.e**(-math.sqrt(a*b)*t)))
 
+
+# In[3]:
+
+
 def izracunajB(a, b, A0, B0, t):
     return ((math.sqrt(a*b)*B0 - b*A0)/(2*math.sqrt(a*b))*(math.e**(math.sqrt(a*b)*t))) + ((math.sqrt(a*b)*B0 + b*A0)/(2*math.sqrt(a*b))*(math.e**(-math.sqrt(a*b)*t)))
+
+
+# In[4]:
+
 
 def odrediTrenutakPobede(a, b, A0, B0):
     for i in list(odrediInterval(0, 100, 0.01)):
@@ -14,12 +32,20 @@ def odrediTrenutakPobede(a, b, A0, B0):
             return i-0.00001
     return i
 
+
+# In[5]:
+
+
 def odrediInterval(pocetak, kraj, korak):
     interval = []
     while pocetak < kraj:
         interval.append(pocetak)
         pocetak += korak
     return interval
+
+
+# In[6]:
+
 
 def simulirajBitku(a, b, A0, B0):
     trenutakPobede = odrediTrenutakPobede(a, b, A0, B0)
@@ -46,9 +72,21 @@ def simulirajBitku(a, b, A0, B0):
     else:
         print("Neodlucna bitka!")
 
+
+# In[7]:
+
+
 simulirajBitku(0.5, 1, 500, 700)
 
+
+# In[8]:
+
+
 simulirajBitku(1, 1, 1400, 700)
+
+
+# In[9]:
+
 
 def odrediPobednika(a, b, A0, B0):
     if (b*A0**2 > a*B0**2):
@@ -87,20 +125,45 @@ def simulirajBitku2(A0, B0):
     cbar.set_ticklabels(["Pobeda B","Nereseno","Pobeda A"])
     plt.show()
 
+
+# In[10]:
+
+
 simulirajBitku2(500, 500)
+
+
+# In[11]:
+
+
 simulirajBitku2(500, 1000)
+
+
+# In[12]:
+
 
 def izracunajZasedaA(a, b, t, d1, c2):
     return (2*d1)/(c2*(math.e**(d1*b*t)) - 1) + d1   
 
+
+# In[13]:
+
+
 def izracunajZasedaB(a, b, t, d1, c2):
     return (2/a)*((b*c2*(d1**2)*(math.e**(d1*b*t)))/((c2*(math.e**(d1*b*t)) - 1)**2))
+
+
+# In[14]:
+
 
 def nadjiC2(a, b, A0, B0):
     a1 = B0
     b1 = 2*B0 - (2*b*(A0**2))/a
     c1 = B0
     return (-b1 + math.sqrt((b1**2) - 4*a1*c1))/(2*a1) 
+
+
+# In[15]:
+
 
 def simulirajBitkuZaseda(a, b, A0, B0):
     c2 = nadjiC2(a, b, A0, B0)
@@ -122,5 +185,21 @@ def simulirajBitkuZaseda(a, b, A0, B0):
 
     plt.show()
 
-simulirajBitkuZaseda(1, 0.6, 100, 150)
+
+# In[16]:
+
+
+simulirajBitkuZaseda(1, 0.5, 100, 200)
+
+
+# In[17]:
+
+
 simulirajBitkuZaseda(1, 1, 200, 100)
+
+
+# In[ ]:
+
+
+
+
